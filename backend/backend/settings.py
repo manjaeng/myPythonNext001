@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-q@1%#-!f6rez*@tniha#mse7i_zn3%dv+2ea6$wj$cu!#dhec_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['132.145.89.99', 'manjaeng.duckdns.org']
+ALLOWED_HOSTS = ['132.145.89.99', 'manjaeng.duckdns.org', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'colorfield',        # django-admin-interface 필수
     'admin_interface',   # Admin 테마
     'django.contrib.admin',
@@ -142,3 +143,10 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     },
 }
+
+INSTALLED_APPS += ['corsheaders']
+MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware'] + MIDDLEWARE
+CORS_ALLOW_ALL_ORIGINS = True  # 로컬 개발용
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
