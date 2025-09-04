@@ -22,3 +22,11 @@ class Chapter(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     description = models.TextField(null=True, blank=True)  # 새로 추가
+
+class Photo(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='photos/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
