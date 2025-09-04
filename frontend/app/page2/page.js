@@ -5,7 +5,7 @@ export default function Home() {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        fetch('https://manjaeng.duckdns.org//api/hello/')
+        fetch('https://manjaeng.duckdns.org/api/hello/')
             .then(res => res.json())
             .then(data => setMessage(data.message))
             .catch(err => console.error(err));
