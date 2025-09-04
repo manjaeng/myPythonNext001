@@ -1,6 +1,8 @@
 # backend/myapp/admin.py
 from django.contrib import admin
 from .models import Author, Book, Chapter
+from django.utils.html import format_html
+from .models import Photo
 # backend/myapp/admin.py
 admin.site.site_header = "My Company Admin"
 admin.site.site_title = "Admin Portal"
@@ -34,3 +36,13 @@ class AuthorAdmin(admin.ModelAdmin):
     list_display = ('name', 'email')
     search_fields = ('name',)
 
+@admin.register(Photo)
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'uploaded_at', 'image_tag')
+    readonly_fields = ('image_tag',)
+
+    def image_tag(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="max-height: 200px;"/>', obj.image.url)
+        return "-"
+    image_tag.short_description = '미리보기'
