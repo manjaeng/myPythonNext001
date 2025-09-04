@@ -52,7 +52,7 @@ export default function Home() {
         </div>
           <div>
           <p>
-              👉 <Link href="/page2/page">Page2로 이동</Link>
+              👉 <Link href="/page2">Page2로 이동</Link>
           </p>
           </div>
       </main>
